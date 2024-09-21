@@ -19,13 +19,15 @@ class ApiService {
       body: jsonEncode(body),
     );
 
+    print('ressssssssssssssssssssssssssssss${response.statusCode}');
+
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       return RegistrationResponse.fromJson(data);
     } else {
       return RegistrationResponse(
         success: false,
-        message: 'Server error, please try again later.',
+        message: 'Server error, please try again laterdddddddddddddddddddddddddddddddddddddddddddddd.',
       );
     }
   }
@@ -45,7 +47,7 @@ class ApiService {
       body: jsonEncode({
         "email": email,
         "password": password,
-        "role": role,
+        "role": 'farmer',
         "device_token": deviceToken,
         "type": type,
         "social_id": socialId,
@@ -58,7 +60,7 @@ class ApiService {
       return LoginResponse.fromJson(data);
     } else {
       // If server returns an error, return a failed response
-      print('noooooooooooooooooooooooo');
+      print('noooooooooooooooooooooooo${response.body}');
       return LoginResponse(
         success: false,
         message: 'Server error, please try again later.',
@@ -72,7 +74,7 @@ class ApiService {
       Uri.parse(forgotPasswordUrl),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({
-        "mobile": '+91$mobileNumber',
+        "mobile": '$mobileNumber',
       }),
     );
 

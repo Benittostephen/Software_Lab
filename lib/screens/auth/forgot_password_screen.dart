@@ -68,7 +68,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 hintText: 'Phone Number',
                 obscureText: false,
                 prefixicon: 'assets/icons/phone.png'),
-            const SizedBox(height: 30),
+            const SizedBox(height: 10),
             CustomButton(buttonName: 'Send Code', onTap: sendOtp)
           ],
         ),

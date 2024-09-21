@@ -25,16 +25,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> loginUser() async {
     final loginResponse = await apiService.loginUser(
-      email: emailController.text,
+      email: emailController.text.toLowerCase(),
       password: passwordController.text,
       role: "farmer",
       deviceToken: "0imfnc8mVLWwsAawjYr4Rx-Af50DDqtlx",
-      type: "email/facebook/google/apple",
+      type: "email",
       socialId: "0imfnc8mVLWwsAawjYr4Rx-Af50DDqtlx",
     );
 
     setState(() {
       loginMessage = loginResponse.message;
+      print('eeeeeeeeeeeeeeee$loginMessage');
     });
 
     if (loginResponse.success) {
@@ -108,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   prefixicon: 'assets/icons/at.png',
                   hintText: 'Email Address',
                 ),
-                const SizedBox(height: 20),
+                //const SizedBox(height: 20),
                 SizedBox(
                   height: 48,
                   child: TextFormField(

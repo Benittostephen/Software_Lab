@@ -96,6 +96,7 @@ class _BusinessHoursScreenState extends State<BusinessHoursScreen> {
 
       setState(() {
         message = registrationResponse.message;
+        print('bbbbbbbbbbbbbb$message');
       });
 
       if (registrationResponse.success) {
@@ -106,7 +107,10 @@ class _BusinessHoursScreenState extends State<BusinessHoursScreen> {
         //SnackBar Message
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(registrationResponse.message)));
-      } else {
+      } else {/*Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const SuccessScreen()));*/
+
+      print('objecttttttttttttttttttttt');
         // Handle error case
         print("Error: ${registrationResponse.message}");
         ScaffoldMessenger.of(context)

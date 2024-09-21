@@ -75,14 +75,14 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               obscureText: true,
               prefixicon: 'assets/icons/lock.png',
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 5),
             CustomTextfield(
               controller: confirmPasswordController,
               hintText: 'Confirm New Password',
               obscureText: true,
               prefixicon: 'assets/icons/lock.png',
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 10),
             CustomButton(buttonName: 'Submit', onTap: resetPassword)
           ],
         ),

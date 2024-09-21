@@ -5,6 +5,8 @@ class CustomTextfield extends StatefulWidget {
   final bool obscureText;
   final String hintText;
   final String? prefixicon;
+  final String? suffixIcon;
+  final String? Function(String?)? validater;
 
   const CustomTextfield({
     super.key,
@@ -12,6 +14,8 @@ class CustomTextfield extends StatefulWidget {
     required this.hintText,
     required this.obscureText,
     required this.prefixicon,
+    this.validater,
+    this.suffixIcon,
   });
 
   @override
@@ -22,12 +26,14 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 48,
+      height: 70,
       child: TextFormField(
+        validator: widget.validater ?? null,
         controller: widget.controller,
         obscureText: widget.obscureText,
         decoration: InputDecoration(
-          prefixIconConstraints: const BoxConstraints(minWidth: 40, minHeight: 20),
+          prefixIconConstraints:
+              const BoxConstraints(minWidth: 40, minHeight: 20),
           filled: true,
           fillColor: const Color(0xFFeeedec),
           hintText: widget.hintText,
@@ -53,12 +59,14 @@ class _CustomTextfieldState extends State<CustomTextfield> {
             borderRadius: BorderRadius.circular(10.0),
             //borderSide: BorderSide.none,
           ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           //labelText: widget.labelText,
           // labelStyle: TextStyle(
           //   color: Color(0xFFF454545),
           // )
         ),
+
         // autovalidateMode: AutovalidateMode.onUserInteraction,
       ),
     );
