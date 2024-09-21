@@ -82,67 +82,76 @@ class _FarmInfoScreenState extends State<FarmInfoScreen> {
                 hintText: 'Business Name',
                 obscureText: false,
                 prefixicon: 'assets/icons/tag.png'),
-            const SizedBox(height: 20),
+            //const SizedBox(height: 20),
             CustomTextfield(
                 controller: informalNameController,
                 hintText: 'Informal Name',
                 obscureText: false,
                 prefixicon: 'assets/icons/emoji.png'),
-            const SizedBox(height: 20),
+            //  const SizedBox(height: 20),
             CustomTextfield(
                 controller: addressController,
                 hintText: 'Street Address',
                 obscureText: false,
                 prefixicon: 'assets/icons/home.png'),
-            const SizedBox(height: 20),
+            //  const SizedBox(height: 20),
             CustomTextfield(
                 controller: cityController,
                 hintText: 'City',
                 obscureText: false,
                 prefixicon: 'assets/icons/location.png'),
-            const SizedBox(height: 20),
-            Row(
+            // const SizedBox(height: 20),
+            Column(
               children: [
-                Expanded(
-                    flex: 2,
-                    child: Container(
-                      height: 48,
-                      decoration: BoxDecoration(
-                        color: const Color(0xffeeedec),
-                        borderRadius: BorderRadius.circular(8),
+                Row(
+                  children: [
+                    Expanded(
+                        flex: 2,
+                        child: Container(
+                          height: 48,
+                          decoration: BoxDecoration(
+                            color: const Color(0xffeeedec),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: DropdownButtonFormField<String>(
+                            value: selectedState,
+                            decoration: const InputDecoration(
+                              labelText: 'State',
+                              labelStyle: TextStyle(color: Color(0xFFa7a6a5)),
+                              border: InputBorder.none,
+                            ),
+                            dropdownColor: Colors.white,
+                            items: states
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedState = newValue;
+                              });
+                            },
+                          ),
+                        )),
+                    const SizedBox(width: 20),
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 20),
+                          CustomTextfield(
+                            prefixicon: null,
+                            obscureText: false,
+                            controller: zipCodeController,
+                            hintText: 'Enter Zipcode',
+                          ),
+                        ],
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: DropdownButtonFormField<String>(
-                        value: selectedState,
-                        decoration: const InputDecoration(
-                          labelText: 'State',
-                          labelStyle: TextStyle(color: Color(0xFFa7a6a5)),
-                          border: InputBorder.none,
-                        ),
-                        dropdownColor: Colors.white,
-                        items: states
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedState = newValue;
-                          });
-                        },
-                      ),
-                    )),
-                const SizedBox(width: 20),
-                Expanded(
-                  flex: 3,
-                  child: CustomTextfield(
-                    prefixicon: null,
-                    obscureText: false,
-                    controller: zipCodeController,
-                    hintText: 'Enter Zipcode',
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -157,7 +166,7 @@ class _FarmInfoScreenState extends State<FarmInfoScreen> {
                 ),
                 const Spacer(flex: 1),
                 Expanded(
-                  flex: 3,
+                  //flex: 3,
                   child: CustomButton(
                       buttonName: 'Continue',
                       onTap: () {
